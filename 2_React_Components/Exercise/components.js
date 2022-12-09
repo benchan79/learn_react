@@ -285,3 +285,25 @@ ReactDOM.render(
   <Button />,
   document.getElementById('app6-1')
 );
+
+
+class TestFunc extends React.Component {
+  myFunc() {
+    return 'test function'
+  }
+
+  render() {
+    const my_string = 'some string';
+    return (
+      <>
+        <h1>{this.myFunc()}</h1>
+        <p>{my_string}</p>
+      </>
+    )
+  }
+}
+
+ReactDOM.render(
+  <TestFunc />,
+  document.getElementById('app7-1')
+);
