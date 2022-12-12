@@ -250,11 +250,152 @@ ReactDOM2.render(
   document.getElementById('root15')
 );
 
+///////////////////////////////////////////////////////////////////////////
+class ExampleMoodHungry extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { 
+      mood: 'decent',
+      hungry: 'hungry' 
+    };
+    this.eat = this.eat.bind(this);
+  }
+  
+  eat() {
+    this.setState({ hungry: 'full' });
+  }
 
+  render() {
 
+    return (
+      <div>
+        <h1>I'm feeling {this.state.mood}!</h1>
+        Current State of {Object.keys(this.state)[0]} is {Object.values(this.state)[0]}
+        <h1>I'm feeling {this.state.hungry}!</h1>
+        <button onClick={this.eat}>Eat something</button>
+      </div>
+      
+    );
+  }
+}
 
+ReactDOM2.render(
+  <ExampleMoodHungry />, 
+  document.getElementById('root16')
+);
+///////////////////////////////////////////////////////////////////////////
+class BestApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {title: 'Best App'}
+  }
+	
+  render() {
+    return (
+      <h1>
+        {this.state.title}
+      </h1>
+    );
+  }
+}
+
+ReactDOM2.render(
+  <BestApp />, 
+  document.getElementById('root17')
+);
 
 ///////////////////////////////////////////////////////////////////////////
+class ExampleFog extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { weather: 'sunny' };
+    this.makeSomeFog = this.makeSomeFog.bind(this);
+  }
+ 
+  makeSomeFog() {
+    this.setState({
+      weather: 'foggy'
+    });
+  }
+  render() {
+
+    return (
+      <div>
+        <h1>Today is {this.state.weather}!</h1>
+        <button onClick={this.makeSomeFog}>Make some fog!</button>
+      </div>
+    );
+  }
+}
+
+ReactDOM2.render(
+  <ExampleFog />, 
+  document.getElementById('root18')
+);
+///////////////////////////////////////////////////////////////////////////
+class Mood extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { mood: 'good' };
+    this.toggleMood = this.toggleMood.bind(this);
+  }
+
+  toggleMood() {
+    const newMood = this.state.mood === 'good' ? 'bad' : 'good';
+    this.setState({ mood: newMood });
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>I'm feeling {this.state.mood}!</h1>
+        <button onClick={this.toggleMood}>
+          Click Me
+        </button>
+      </div>
+    );
+  }
+}
+
+ReactDOM2.render(
+  <Mood />, 
+  document.getElementById('root19')
+);
+///////////////////////////////////////////////////////////////////////////
+const green = '#39D1B4';
+const yellow = '#FFD712';
+
+class Toggle extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { color: green }
+    this.changeColor = this.changeColor.bind(this);
+  }
+
+  changeColor() {
+    const newColor = this.state.color === green ? yellow : green;
+    this.setState({color: newColor});
+  }
+
+  render() {
+    return (
+      <div style={{background: this.state.color}}>
+        <h1>
+          Change my color
+        </h1>
+        <button onClick={this.changeColor}>
+          Change color
+        </button>
+      </div>
+    );
+  }
+}
+
+ReactDOM2.render(
+  <Toggle />,
+  document.getElementById('root20')
+);
+
 // const root4 = ReactDOM.createRoot(document.getElementById('root4'));
 // root4.render(
 //   <React.StrictMode>
