@@ -428,24 +428,28 @@ export function SubjectRefactored() {
   // const [currentGrade, setGrade] = useState('B');
   // const [classmates, setClassmates] = useState(['Hasan', 'Sam', 'Emma']);
   // const [classDetails, setClassDetails] = useState({topic: 'Math', teacher: 'Ms. Barry', room: 201});
-  const [exams, setExams] = useState([{unit: 1, score: 91}, {unit: 2, score: 88}]);
-  const [test, setTest] = useState({})
+  const [exams, setExams] = useState([
+    {unit: "1", score: 91}, 
+    {unit: "2", score: 88}
+  ]);
+  // const [test, setTest] = useState({})
 
 
-  const handleTest = ({target}) => {    
-    const {name, value} = target;
-    setTest((prevTest) => ({
-      ...prevTest, 
-      [name]: +value
-    }));
-  }
+  // const handleTest = ({target}) => {    
+  //   const {name, value} = target;
+  //   setTest((prevTest) => ({
+  //     ...prevTest, 
+  //     [name]: +value
+  //   }));
+  // }
 
-  const handleUpdateScore = (event) => {
+  const handleUpdateScore = ({target}) => {
+    const { name, value } = target
     setExams((prevExams) => {
       return (
         prevExams.map((exam) => {
-          if( exam.unit === test.unit) {
-            return {...exam, score: test.score}
+          if( exam.unit === name) {
+            return {...exam, score: value}
           } else {
             return exam;
           }
@@ -458,26 +462,24 @@ export function SubjectRefactored() {
     <div>
       <h3>Unit: {exams[0].unit}, Score: {exams[0].score}</h3>
       <h3>Unit: {exams[1].unit}, Score: {exams[1].score}</h3>
-      <span>Unit:  </span>
+      <span>Unit 1:  </span>
       <input
-        onChange={handleTest}
-        value={test.unit || ''}
-        type="number"
-        name="unit"
-        placeholder="Unit"
+        onChange={handleUpdateScore}
+        value={exams[0].score}
+        type='text'
+        name={exams[0].unit}
       />
-      <span>Score:  </span>
+      <span>Unit 2:  </span>
       <input
-        onChange={handleTest}
-        value={test.score || ''}
-        type="number"
-        name="score"
-        placeholder="Score"
+        onChange={handleUpdateScore}
+        value={exams[1].score}
+        type='text'
+        name={exams[1].unit}
       />
       <p/>
-      <button onClick={handleUpdateScore}>
+      {/* <button onClick={handleUpdateScore}>
         update
-      </button>
+      </button> */}
     </div>
   );
 };
