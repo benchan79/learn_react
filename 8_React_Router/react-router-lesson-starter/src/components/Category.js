@@ -17,7 +17,7 @@ export default function Category () {
         { 
           categories[name].map(articleSlug => {
             return (
-              <li>
+              <li key={articleSlug}>
                 <Link to={`/articles/${articleSlug}`}>
                   {articles[articleSlug].title}
                 </Link>
